@@ -1,0 +1,60 @@
+[tool.poetry]
+name = "event-consumer"
+version = "0.1.0"
+description = "The app to process, validate and monitor events"
+authors = ["0eu <eugene@fup.app>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+pre-commit = "^2.16.0"
+black = "^21.12b0"
+flake8 = "^4.0.1"
+isort = "^5.10.1"
+autoflake = "^1.4"
+
+[tool.pytest.ini_options]
+testpaths = "tests"
+cache_dir = ".pytest_cache"
+
+[tool.isort]
+profile = "black"
+atomic = true
+multi_line_output = 3
+include_trailing_comma = true
+lines_after_imports = 2
+lines_between_types = 1
+force_grid_wrap = 0
+use_parentheses = true
+line_length = 100
+
+[tool.black]
+line-length = 100
+target-version = ['py39']
+include = '\.pyi?$'
+
+exclude = '''
+(
+  /(
+      \.eggs
+    | \.git
+    | \.pytest_cache
+    | \.github
+    | venv
+    | _build
+    | buck-out
+    | build
+    | dist
+    | docs
+    | blib2to3
+    | tests/data
+  )/
+)
+'''
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

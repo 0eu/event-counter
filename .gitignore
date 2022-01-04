@@ -1,0 +1,10 @@
+__pycache__
+.mypy_cache/
+.pytest_cache/
+.hypothesis/
+.idea/
+.env
+*.swp
+*.iml
+poetry.lock
+.python-version
