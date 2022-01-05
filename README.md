@@ -81,7 +81,7 @@ The report file path can be adjusted by changing an option: `--report`.
 ### Solution 4: Probabilistic Approach [Not a solution of a problem but an interesting approach]
 In computing, the count–min sketch (CM sketch) is a probabilistic data structure that serves as a frequency table of events in a stream of data. It uses hash functions to map events to frequencies, but unlike a hash table uses only sub-linear space, at the expense of overcounting some events due to collisions. More info [here](https://en.wikipedia.org/wiki/Count–min_sketch).
 
-## Installation
+## Usage
 
 To build a docker image:
 ```shell
