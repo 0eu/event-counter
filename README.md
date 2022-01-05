@@ -85,17 +85,22 @@ In computing, the count–min sketch (CM sketch) is a probabilistic data structu
 
 To build a docker image:
 ```shell
-make install
+$ make install
 ```
 
 To run tests withing the docker container:
 ```shell
-make test
+$ make test
 ```
 
 To generate a report:
 ```shell
-make report FILENAME="example_events.text"
+$ make report FILENAME="example_events.text"
+docker run ... --report output/report.txt
+
+$ cat output/report.txt | head
+2018-01-30 submission_success,1
+2018-02-03 registration_initiated,1
 ```
 where `FILENAME` is the name of the file with events, e.g. `example_events.text`. If you want to test the application against a custom file, put it to `tests/data/` directory, because it's mounted as a read-only bind for the container.
 
