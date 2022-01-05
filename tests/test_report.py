@@ -147,7 +147,5 @@ def test_chunk_of_sorted_event_counts_spilled(events: List[str], expected_conten
         pytest.param([], [], id="no events"),
     ),
 )
-def test_count_events(
-    chunks: List[List[Tuple[str, int]]], expected_counts: List[Tuple[str, int]]
-) -> None:
+def test_count_events(chunks: List[List[str]], expected_counts: List[Tuple[str, int]]) -> None:
     assert list(count_events(sorted_chunks=chunks)) == expected_counts
