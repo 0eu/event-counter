@@ -1,0 +1,24 @@
+---
+kind: Schema
+version: v0.0.1
+
+schema:
+  - name: event_id
+    type: str
+    description: Event ID
+  - name: created_at
+    type: str
+    description: Created at
+  - name: user_id
+    type: int
+    description: User ID
+  - name: permission
+    type: enum
+    variants:
+      - read
+      - write
+    description: Permission
+  - name: is_active
+    type: bool
+    description: Is active
+    required: false

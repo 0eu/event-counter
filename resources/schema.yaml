@@ -1,0 +1,84 @@
+---
+kind: Schema
+version: v0.0.1
+
+schema:
+  - name: id
+    type: str
+    description: Unique identifier for the event.
+  - name: anonymous_id
+    type: str
+    description: Unique identifier for the anonymous user.
+  - name: context_device_token
+    type: str
+    description: The device token.
+    required: false
+  - name: context_app_version
+    type: str
+    description: The version of the application.
+    required: false
+  - name: context_device_manufacturer
+    type: str
+    description: The manufacturer of the device.
+  - name: context_device_model
+    type: str
+    description: The model of the device.
+  - name: context_library_version
+    type: str
+    description: The name of the library.
+    required: false
+  - name: context_library_name
+    type: str
+    description: The name of the library.
+    required: false
+  - name: context_device_type
+    type: str
+    description: The type of the device.
+  - name: context_locale
+    type: str
+    description: The locale of the device.
+  - name: context_timezone
+    type: str
+    description: The timezone of the device.
+    required: false
+  - name: event
+    type: str
+    description: The name of the event.
+  - name: event_text
+    type: str
+    description: The text representation of the event.
+  - name: context_network_carrier
+    type: str
+    description: The carrier of the device.
+  - name: context_traits_taxfix_language
+    type: str
+    description: The language of the device.
+  - name: user_id
+    type: int
+    description: The ID of the user.
+    required: false
+  - name: received_at
+    type: str
+    description: The date and time when the event was received by the server.
+  - name: original_timestamp
+    type: str
+    description: The date and time when the event was received by the server.
+  - name: sent_at
+    type: str
+    description: The date and time when the event was sent to the server.
+  - name: timestamp
+    type: str
+    description: The date and time when the event was happened.
+  - name: context_device_ad_tracking_enabled
+    type: bool
+    description: Whether advertising tracking is enabled.
+    required: false
+  - name: context_network_wifi
+    type: bool
+    description: Whether the device is connected via WiFi.
+  - name: context_os_name
+    type: enum
+    description: The name of the operating system.
+    variants:
+      - android
+      - ios
