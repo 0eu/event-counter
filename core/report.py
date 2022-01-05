@@ -15,8 +15,6 @@ from sortedcontainers import SortedDict
 from core.schema import Schema, SchemaValidationError
 
 
-MAX_KEYS_COUNT = 5
-
 logger = logging.getLogger(__name__)
 Pair = collections.namedtuple("Pair", ["date", "event"])
 
@@ -25,7 +23,7 @@ def get_sorted_events_chunks(
     *,
     reader: IO,
     schema: Schema,
-    max_keys_count: int = MAX_KEYS_COUNT,
+    max_keys_count: int,
     split_writer: Callable = partial(TemporaryFile, mode="w+"),
 ) -> Iterable[io.TextIOBase]:
     """

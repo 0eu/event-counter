@@ -9,6 +9,9 @@ from core.report import get_sorted_events_chunks, write_report
 from core.schema import Schema
 
 
+MAX_KEYS_COUNT = 1 << 16  # 65_536
+
+
 def init_argparse() -> ArgumentParser:
     parser = ArgumentParser(
         usage="event-counter [-c number] [-s schema-path] [FILE]",
@@ -18,7 +21,7 @@ def init_argparse() -> ArgumentParser:
         "--max-keys-count",
         help="Maximum keys to store in-memory while counting",
         type=int,
-        default=10,
+        default=MAX_KEYS_COUNT,
     )
     parser.add_argument(
         "--schema",
