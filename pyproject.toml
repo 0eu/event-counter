@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "event-consumer"
+name = "event-counter"
 version = "0.1.0"
 description = "The app to process, validate and monitor events"
 authors = ["0eu <eugene@fup.app>"]
