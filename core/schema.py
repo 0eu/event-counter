@@ -7,6 +7,10 @@ import yaml
 
 @attr.s(auto_attribs=True)
 class SchemaValidationError(Exception):
+    """
+    Exception raised when a schema validation fails.
+    """
+
     msg: str
 
 
@@ -49,6 +53,10 @@ class FieldType:
 
 @attr.s(auto_attribs=True, frozen=True, slots=True)
 class Field:
+    """
+    A field represents a part of a schema.
+    """
+
     name: str = attr.ib()
     type: FieldType = attr.ib()
     required: bool = attr.ib(default=True)
@@ -65,6 +73,12 @@ class Schema:
 
     @staticmethod
     def from_file(file_path: str) -> "Schema":
+        """
+        Load a schema from a file.
+
+        :param file_path: path to the schema file.
+        :return: Schema object.
+        """
         with open(file_path, "r") as fd:
             raw_schema = yaml.safe_load(fd)
             assert raw_schema["kind"] == "Schema", "Schema file must have kind `Schema`"
@@ -80,6 +94,20 @@ class Schema:
             return Schema(tuple(fields))
 
     def validate(self, raw_event: dict) -> None:
+        """
+        Validate an event against the schema.
+
+        Iterate over all schema's fields and validate them:
+        1. If a field is optional and it's not in schema - OK.
+        2. If a field is required and it has a valid type - OK.
+        3. If a field is unknown: it's in the raw_event, but not in the schema - raise error.
+        4. If a field is required and it's not in schema - raise error.
+        5. If a field is required and it's type is not valid - raise error.
+
+        :raise: SchemaValidationError if validation is failed.
+        :param raw_event: a dict representing an event.
+        :return: None
+        """
         seen = set()
         for field in self._fields:
             if field.name not in raw_event:
