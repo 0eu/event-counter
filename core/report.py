@@ -69,6 +69,14 @@ def parse_event(raw_event: str, schema: Schema) -> Pair:
     """
 
     def to_date(raw_date: str) -> str:
+        """
+        Converts the date to the format YYYY-mm-dd.
+
+        TODO: add proper date parsing, now it takes a left part by T/<space>.
+
+        :param raw_date: string representation of the date
+        :return: date in the format YYYY-mm-dd
+        """
         sep = "T" if "T" in raw_date else " "
         return raw_date.split(sep=sep, maxsplit=1)[0]
 
