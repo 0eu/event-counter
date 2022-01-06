@@ -90,7 +90,7 @@ def spill_chunk_of_sorted_event_counts(*, counts: SortedDict, writer: Callable) 
     fd = writer()
     while counts:
         key, count = counts.popitem(0)
-        fd.write(f"{' '.join(key)},{count}\n")
+        fd.write(f"{','.join(key)},{count}\n")
     fd.seek(os.SEEK_SET)
     return fd
 
