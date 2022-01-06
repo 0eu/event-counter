@@ -81,6 +81,25 @@ The report file path can be adjusted by changing an option: `--report`.
 ### Solution 4: Probabilistic Approach [Not a solution of a problem but an interesting approach]
 In computing, the count–min sketch (CM sketch) is a probabilistic data structure that serves as a frequency table of events in a stream of data. It uses hash functions to map events to frequencies, but unlike a hash table uses only sub-linear space, at the expense of overcounting some events due to collisions. More info [here](https://en.wikipedia.org/wiki/Count–min_sketch).
 
+### Solution 5: External tools (databases, mpp, spark, etc.)
+_**Note**: I assume, external tools are forbidden for tackling the problem._
+
+The idea is to write chunks directly to HDFS in Parquet format with the following schema:
+- date: date of the event in the format _YYYY-mm-dd_
+- name: name of the event
+- count: number of events happened on the date
+
+Then create an external table which uses those partitions. And run something like:
+```sql
+SELECT
+    `date`, `name`, sum(`count`) as `count`
+FROM events
+GROUP BY event_date, event_name
+ORDER BY 1, 3 DESC;
+```
+
+In case, you need to load data to a relation database, such as Postgres (which is not recommended for this task), you may want to use `COPY` command and text files or file-like objects such as _StringIO_, _BytesIO_.
+
 ## Usage
 
 To build a docker image:
