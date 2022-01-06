@@ -23,7 +23,7 @@ class FieldTypes(str, Enum):
     bool = "bool"
 
 
-@attr.s(frozen=True, slots=True, auto_attribs=True)
+@attr.s(frozen=True, slots=True)
 class FieldType:
     """A field type is a part of a schema."""
 
@@ -51,7 +51,7 @@ class FieldType:
         return self.type.value == type(value).__name__
 
 
-@attr.s(auto_attribs=True, frozen=True, slots=True)
+@attr.s(frozen=True, slots=True)
 class Field:
     """
     A field represents a part of a schema.
