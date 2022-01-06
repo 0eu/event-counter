@@ -14,7 +14,10 @@ MAX_KEYS_COUNT = 1 << 16  # 65_536
 
 def init_argparse() -> ArgumentParser:
     parser = ArgumentParser(
-        usage="event-counter [-c number] [-s schema-path] [FILE]",
+        usage=(
+            "event-counter [--max-keys-count number] [--schema schema-path] "
+            "[--events events-path] [--report report-path]"
+        ),
         description="The application counts events in the file",
     )
     parser.add_argument(
